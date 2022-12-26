@@ -1,4 +1,4 @@
-import styles from '~/styles/main.css';
+import styles from "~/styles/main.css";
 
 import {
   Links,
@@ -8,6 +8,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import MainNavigation from "~/components/MainNavigation";
 
 export const meta = () => ({
   charset: "utf-8",
@@ -23,6 +24,9 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <header>
+          <MainNavigation />
+        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -33,5 +37,5 @@ export default function App() {
 }
 
 export function links() {
-  return [{ rel: 'stylesheet', href: styles }]
+  return [{ rel: "stylesheet", href: styles }];
 }

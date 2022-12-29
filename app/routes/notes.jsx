@@ -51,6 +51,11 @@ export async function action({ request }) {
   return redirect("/notes");
 }
 
+// export function deleteNote(data) {
+//   // const notes = getStoredNotes();
+//   console.log(data);
+// }
+
 export function links() {
   return [...newNoteLinks(), ...noteListLinks()];
 }

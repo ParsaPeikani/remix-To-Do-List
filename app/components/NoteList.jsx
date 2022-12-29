@@ -7,6 +7,9 @@ function NoteList({ notes }) {
     <ul id="note-list">
       {notes.map((note, index) => (
         <li key={note.id} className="note">
+          <div className="space">
+            <button className="button-1">Delete</button>
+          </div>
           <Link to={note.id}>
             <article>
               <header>
@@ -24,9 +27,9 @@ function NoteList({ notes }) {
                     </time>
                   </li>
                 </ul>
-                <h2>{note.title}</h2>
+                <h2 className="center">{note.title}</h2>
               </header>
-              <p>{note.content}</p>
+              {/* <p>{note.content}</p> */}
             </article>
           </Link>
         </li>

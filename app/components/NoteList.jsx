@@ -1,4 +1,7 @@
 import { Link } from "@remix-run/react";
+// import { redirect } from "@remix-run/node";
+// import { deleteNotes } from "~/routes/notes";
+// import { getStoredNotes, storeNotes } from "~/data/notes";
 
 import styles from "./NoteList.css";
 

@@ -1,10 +1,31 @@
+#notes-actions {
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#notes-actions a {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  color: var(--color-primary-800);
+  background-color: var(--color-primary-10);
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+}
+
+#notes-actions a:hover {
+  background-color: var(--color-gray-100);
+}
+
 #note-form {
   max-width: 30rem;
-  margin: 3rem auto;
+  margin: 0rem auto;
   padding: 2rem;
   border-radius: 6px;
   background-color: var(--color-primary-100);
-  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2); */
 }
 
 #note-form label,
@@ -12,6 +33,20 @@
 #note-form textarea {
   display: block;
   text-align: center;
+}
+
+#note-form .form-actions {
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  text-align: center;
+}
+
+#note-form a {
+  color: var(--color-gray-700);
+}
+
+#note-form a:hover {
+  color: var(--color-gray-500);
 }
 
 #note-form label {
@@ -48,7 +83,7 @@
 }
 
 .form-actions button:hover {
-  background-color: var(--color-primary-200);
+  background-color: var(--color-primary-300);
 }
 
 .form-actions button:disabled {

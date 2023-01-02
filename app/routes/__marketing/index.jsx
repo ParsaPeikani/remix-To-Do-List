@@ -1,6 +1,6 @@
-import { Link } from '@remix-run/react';
+import { Link } from "@remix-run/react";
 
-import homeStyles from  '~/styles/home.css';
+import homeStyles from "~/styles/home.css";
 
 export default function Index() {
   return (
@@ -14,6 +14,6 @@ export default function Index() {
   );
 }
 
-export function links(){
-  return [{ rel: 'stylesheet', href: homeStyles }]
+export function links() {
+  return [{ rel: "stylesheet", href: homeStyles }];
 }

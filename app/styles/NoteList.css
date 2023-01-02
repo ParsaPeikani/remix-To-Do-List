@@ -6,10 +6,9 @@
 }
 
 #note-list {
-  left: -268px;
-  width: 78rem;
+  padding-right: 250px;
+  width: 60rem;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   list-style: none;

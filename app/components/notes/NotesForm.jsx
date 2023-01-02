@@ -35,7 +35,7 @@ function NotesForm() {
 
   const isSubmitting = navigation.state !== "idle";
   return (
-    <Form method="post" id="note-form">
+    <Form method={noteData ? "patch" : "post"} id="note-form">
       <p>
         <label htmlFor="title">Title</label>
         <input

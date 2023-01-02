@@ -1,16 +1,33 @@
-import { Link, Form } from "@remix-run/react";
+import { Link, Form, useFetcher } from "@remix-run/react";
 
 import styles from "~/styles/NoteList.css";
 
 function NoteListItem({ id, title, content, Duedate }) {
   Duedate = Duedate.slice(0, 10);
+  const fetcher = useFetcher();
+  function deleteNoteHandler() {
+    const proceed = confirm("Are you sure? Do you want to delete this note?");
+    if (!proceed) {
+      return;
+    }
+    fetcher.submit(null, { method: "delete", action: `/notes/${id}` });
+  }
+
+  if (fetcher.state !== "idle") {
+    return (
+      <article className="note-item locked">
+        <p>Deleting...</p>
+      </article>
+    );
+  }
+
   return (
     <ul className="note">
       <article>
         <div className="space">
-          <Form method="delete">
-            <button className="button-1">Delete</button>
-          </Form>
+          <button onClick={deleteNoteHandler} className="button-1">
+            Delete
+          </button>
           <Link to={id}>
             <button className="button-1">Edit</button>
           </Link>

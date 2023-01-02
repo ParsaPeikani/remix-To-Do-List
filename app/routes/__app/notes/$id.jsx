@@ -4,7 +4,7 @@ import { useNavigate } from "@remix-run/react";
 import { validateNoteInput } from "~/data/validation.server";
 import NotesForm from "~/components/notes/NotesForm";
 import Modal from "~/components/utils/Modal";
-import { updateNote } from "~/data/notes.server";
+import { updateNote, deleteNote } from "~/data/notes.server";
 import { redirect } from "@remix-run/node";
 
 export default function UpdateExpensesPage() {
@@ -24,20 +24,20 @@ export default function UpdateExpensesPage() {
 export async function action({ params, request }) {
   const noteId = params.id;
 
-  //   if (request.method === "PATCH") {
-  const formData = await request.formData();
-  const noteData = Object.fromEntries(formData);
+  if (request.method === "PATCH") {
+    const formData = await request.formData();
+    const noteData = Object.fromEntries(formData);
 
-  try {
-    validateNoteInput(noteData);
-  } catch (error) {
-    return error;
+    try {
+      validateNoteInput(noteData);
+    } catch (error) {
+      return error;
+    }
+
+    await updateNote(noteId, noteData);
+    return redirect("/notes");
+  } else {
+    await deleteNote(noteId);
+    return redirect("/notes");
   }
-
-  await updateNote(noteId, noteData);
-  return redirect("/notes");
-  //   } else {
-  //     await deleteExpense(expenseId);
-  //     return redirect("/expenses");
-  //   }
 }

@@ -6,7 +6,7 @@ export async function addNote(noteData) {
       data: {
         title: noteData.title,
         content: noteData.content,
-        Duedate: new Date(noteData.date).toISOString().slice(0, 10),
+        Duedate: new Date(noteData.date).toISOString(),
       },
     });
   } catch (error) {
@@ -17,7 +17,7 @@ export async function addNote(noteData) {
 export async function getNotes() {
   try {
     const notes = await prisma.note.findMany({
-      orderBy: { Duedate: "desc" },
+      orderBy: { Duedate: "asc" },
     });
     return notes;
   } catch (error) {
@@ -46,5 +46,15 @@ export async function updateNote(id, noteData) {
     });
   } catch (error) {
     throw error;
+  }
+}
+
+export async function deleteNote(id) {
+  try {
+    await prisma.note.delete({
+      where: { id },
+    });
+  } catch (error) {
+    throw new Error("Failed to delete note.");
   }
 }

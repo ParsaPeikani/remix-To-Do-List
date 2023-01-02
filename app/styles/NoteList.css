@@ -66,14 +66,19 @@
   width: 100%;
 }
 
+.note-item.locked {
+  justify-content: center;
+  background-color: var(--color-primary-200);
+}
+
 /* CSS */
 .button-1 {
-  background: #effc00;
-  border: 1px solid #ff4742;
+  background: #1e8af5;
+  border: 1px solid #1e8af5;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
-  color: #41a2f6;
+  color: var(--color-primary-800);
   cursor: pointer;
   display: inline-block;
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;

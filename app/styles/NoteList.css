@@ -1,5 +1,4 @@
 .ranking {
-  position: absolute;
   font-size: 35px;
   right: 590px;
   padding-top: 0.5rem;
@@ -7,7 +6,8 @@
 }
 
 #note-list {
-  max-width: 68rem;
+  left: -268px;
+  width: 78rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,7 +20,7 @@
   text-decoration: none;
 }
 .note {
-  width: 50%;
+  width: 250px;
   height: 140px;
   background-color: var(--color-primary-700);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -35,7 +35,7 @@
 .note:hover {
   background-color: var(--color-primary-600);
   cursor: pointer;
-  /* transform: translateY(-0.25rem); */
+  transform: translateY(-0.25rem);
 }
 
 .note-meta {
@@ -68,12 +68,12 @@
 
 /* CSS */
 .button-1 {
-  background: #ee6c4d;
+  background: #effc00;
   border: 1px solid #ff4742;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
-  color: #ffffff;
+  color: #41a2f6;
   cursor: pointer;
   display: inline-block;
   font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
@@ -105,6 +105,8 @@
 
 .space {
   padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .center {

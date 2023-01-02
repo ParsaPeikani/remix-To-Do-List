@@ -7,10 +7,10 @@ import NotesHeader from "~/components/navigation/notesHeader";
 
 export default function ExpensesAppLayout() {
   return (
-    <>
+    <div className="over">
       <NotesHeader />
       <Outlet />
-    </>
+    </div>
   );
 }
 

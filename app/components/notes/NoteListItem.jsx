@@ -1,12 +1,19 @@
+import { Link, Form } from "@remix-run/react";
+
 import styles from "~/styles/NoteList.css";
 
 function NoteListItem({ id, title, content, Duedate }) {
   Duedate = Duedate.slice(0, 10);
   return (
-    <ul>
+    <ul className="note">
       <article>
         <div className="space">
-          <button className="button-1">Delete</button>
+          <Form method="delete">
+            <button className="button-1">Delete</button>
+          </Form>
+          <Link to={id}>
+            <button className="button-1">Edit</button>
+          </Link>
         </div>
         <header>
           <ul className="note-meta">

@@ -6,7 +6,7 @@ export async function addNote(noteData) {
       data: {
         title: noteData.title,
         content: noteData.content,
-        Duedate: new Date(noteData.date).toISOString().slice(0, 10),
+        Duedate: new Date(noteData.Duedate).toISOString().slice(0, 10),
       },
     });
   } catch (error) {
@@ -22,5 +22,14 @@ export async function getNotes() {
     return notes;
   } catch (error) {
     throw error;
+  }
+}
+
+export async function getNote(id) {
+  try {
+    const note = await prisma.note.findFirst({ where: { id } });
+    return note;
+  } catch (error) {
+    throw new Error("Failed to get your Note.");
   }
 }

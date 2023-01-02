@@ -60,9 +60,9 @@ function NotesForm() {
       <p>
         <label htmlFor="date">Due Date</label>
         <input
-          type="Duedate"
-          id="Duedate"
-          name="Duedate"
+          type="date"
+          id="date"
+          name="date"
           required
           defaultValue={
             defaultValues.Duedate ? defaultValues.Duedate.slice(0, 10) : ""

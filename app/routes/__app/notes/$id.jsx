@@ -1,12 +1,11 @@
 // /expenses/<some-id> => /expenses/expense-1, /expenses/e-1
 import { useNavigate } from "@remix-run/react";
 
-// import { validateExpenseInput } from "~/data/validation.server";
+import { validateNoteInput } from "~/data/validation.server";
 import NotesForm from "~/components/notes/NotesForm";
 import Modal from "~/components/utils/Modal";
-// import { deleteExpense, updateExpense } from "~/data/expenses.server";
-// import { redirect } from "@remix-run/node";
-import { getNote } from "~/data/notes.server";
+import { updateNote } from "~/data/notes.server";
+import { redirect } from "@remix-run/node";
 
 export default function UpdateExpensesPage() {
   const navigate = useNavigate();
@@ -22,29 +21,23 @@ export default function UpdateExpensesPage() {
   );
 }
 
-// export async function loader({ params }) {
-//   const expenseId = params.id;
-//   const expense = await getExpense(expenseId);
-//   return expense;
-// }
+export async function action({ params, request }) {
+  const noteId = params.id;
 
-// export async function action({ params, request }) {
-//   const expenseId = params.id;
+  //   if (request.method === "PATCH") {
+  const formData = await request.formData();
+  const noteData = Object.fromEntries(formData);
 
-//   if (request.method === "PATCH") {
-//     const formData = await request.formData();
-//     const expenseData = Object.fromEntries(formData);
+  try {
+    validateNoteInput(noteData);
+  } catch (error) {
+    return error;
+  }
 
-//     try {
-//       validateExpenseInput(expenseData);
-//     } catch (error) {
-//       return error;
-//     }
-
-//     await updateExpense(expenseId, expenseData);
-//     return redirect("/expenses");
-//   } else {
-//     await deleteExpense(expenseId);
-//     return redirect("/expenses");
-//   }
-// }
+  await updateNote(noteId, noteData);
+  return redirect("/notes");
+  //   } else {
+  //     await deleteExpense(expenseId);
+  //     return redirect("/expenses");
+  //   }
+}

@@ -10,7 +10,7 @@ export async function addNote(noteData) {
       },
     });
   } catch (error) {
-    throw error;
+    throw new Error("Failed to add note.");
   }
 }
 
@@ -21,7 +21,7 @@ export async function getNotes() {
     });
     return notes;
   } catch (error) {
-    throw error;
+    throw new Error("Failed to delete notes.");
   }
 }
 
@@ -45,7 +45,7 @@ export async function updateNote(id, noteData) {
       },
     });
   } catch (error) {
-    throw error;
+    throw new Error("Failed to update note.");
   }
 }
 

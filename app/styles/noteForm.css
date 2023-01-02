@@ -1,3 +1,11 @@
+#no-notes {
+  text-align: center;
+}
+
+#no-notes a {
+  color: var(--color-primary-100);
+}
+
 #notes-actions {
   margin: 2rem 0;
   display: flex;

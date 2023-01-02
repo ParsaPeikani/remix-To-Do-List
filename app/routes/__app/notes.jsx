@@ -3,25 +3,10 @@ import { getNotes } from "~/data/notes.server";
 import NotesList from "~/components/notes/NotesList";
 import { FaPlus } from "react-icons/fa";
 
-// const Dummy_Notes = [
-//   {
-//     id: "e1",
-//     title: "Studying for Chemistryhghghghg",
-//     content: "CHert o Pert",
-//     Duedate: new Date().toISOString().slice(0, 10),
-//     index: null,
-//   },
-//   {
-//     id: "e2",
-//     title: "R",
-//     content: "Gholamreza",
-//     Duedate: new Date().toISOString().slice(0, 10),
-//     index: null,
-//   },
-// ];
-
 export default function NotesPage() {
   const notes = useLoaderData();
+
+  const hasNotes = notes && notes.length > 0;
 
   return (
     <>
@@ -33,7 +18,15 @@ export default function NotesPage() {
             <span>Add Notes</span>
           </Link>
         </section>
-        <NotesList notes={notes} />
+        {hasNotes && <NotesList notes={notes} />}
+        {!hasNotes && (
+          <section id="no-notes">
+            <h1>No notes found</h1>
+            <p>
+              Start <Link to="add">adding some</Link> today.
+            </p>
+          </section>
+        )}
       </main>
     </>
   );

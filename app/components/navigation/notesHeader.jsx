@@ -1,4 +1,4 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink, Form } from "@remix-run/react";
 
 import Logo from "../utils/logo";
 
@@ -14,12 +14,23 @@ function NotesHeader() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/notes/analysis">Analyze Notes</NavLink>
+            <label>Sort you Notes: </label>
+            <Form className="drop-down">
+              <br></br>
+              <select name="cars" id="drop-down">
+                <option value="A-Z">Name(A-Z)</option>
+                <option value="SL">Soonest DueDates</option>
+                <option value="Z-A">Name(Z-A)</option>
+                <option value="LS">latest DueDates</option>
+              </select>
+            </Form>
           </li>
         </ul>
       </nav>
       <nav id="cta-nav">
-        <button className="cta">Logout</button>
+        <Form method="post" action="logout">
+          <button className="cta">Logout</button>
+        </Form>
       </nav>
     </header>
   );

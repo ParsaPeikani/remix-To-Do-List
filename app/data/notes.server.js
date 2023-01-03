@@ -1,12 +1,13 @@
 import { prisma } from "./database.server";
 
-export async function addNote(noteData) {
+export async function addNote(noteData, userId) {
   try {
     return await prisma.note.create({
       data: {
         title: noteData.title,
         content: noteData.content,
         Duedate: new Date(noteData.date).toISOString(),
+        User: { connect: { id: userId } },
       },
     });
   } catch (error) {
@@ -14,9 +15,10 @@ export async function addNote(noteData) {
   }
 }
 
-export async function getNotes() {
+export async function getNotes(userId) {
   try {
     const notes = await prisma.note.findMany({
+      where: { userId: userId },
       orderBy: { Duedate: "asc" },
     });
     return notes;

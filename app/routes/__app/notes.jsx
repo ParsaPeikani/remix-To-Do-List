@@ -2,6 +2,7 @@ import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { getNotes } from "~/data/notes.server";
 import NotesList from "~/components/notes/NotesList";
 import { FaPlus } from "react-icons/fa";
+import { requireUserSession } from "~/data/auth.server";
 
 export default function NotesPage() {
   const notes = useLoaderData();
@@ -32,6 +33,8 @@ export default function NotesPage() {
   );
 }
 
-export function loader() {
-  return getNotes();
+export async function loader({ request }) {
+  const userId = await requireUserSession(request);
+
+  return getNotes(userId);
 }
